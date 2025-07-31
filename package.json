@@ -1,0 +1,28 @@
+{
+  "name": "weather",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "weather": "./build/index.js"
+  },
+  "os": ["win32", "darwin", "linux"],
+  "scripts": {
+    "build": "tsc",
+    "postbuild": "node -e \"if (process.platform !== 'win32') require('child_process').execSync('chmod 755 build/index.js')\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "@types/node": "^24.1.0",
+    "typescript": "^5.8.3"
+  },
+  "files": ["build"]
+}
