@@ -5,7 +5,7 @@ import { z } from "zod";
 const NWS_API_BASE = "https://api.weather.gov";
 const USER_AGENT = "weather-app/1.0";
 
-// Create server instance
+// Create server instance，server实例
 const server = new McpServer({
   name: "weather",
   version: "1.0.0",
