@@ -15,7 +15,7 @@
 
 
 # 通信流程
-```
+```mermaid
 graph TD
     A[客户端请求] --> B[stdio传输层]
     B --> C[MCP服务器]
