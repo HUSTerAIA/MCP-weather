@@ -90,11 +90,11 @@ interface ForecastResponse {
 // 注册、执行工具
 // Register weather tools
 server.tool(
-  "get_alerts",
-  "Get weather alerts for a state",
+  "get_alerts",     // name
+  "Get weather alerts for a state",     // description
   {
     state: z.string().length(2).describe("Two-letter state code (e.g. CA, NY)"),
-  },
+  },      // input schema
   async ({ state }) => {
     const stateCode = state.toUpperCase();
     const alertsUrl = `${NWS_API_BASE}/alerts?area=${stateCode}`;
