@@ -16,10 +16,11 @@ const server = new McpServer({
 });
 
 
-
-// 函数
+//===================================================================================
+// 辅助函数：查询和格式化api数据
 // Helper function for making NWS API requests
 async function makeNWSRequest<T>(url: string): Promise<T | null> {
+  // 查询天气api
   const headers = {
     "User-Agent": USER_AGENT,
     Accept: "application/geo+json",
@@ -47,7 +48,7 @@ interface AlertFeature {
   };
 }
 
-// Format alert data
+// Format alert data，格式化数据
 function formatAlert(feature: AlertFeature): string {
   const props = feature.properties;
   return [
@@ -85,7 +86,8 @@ interface ForecastResponse {
   };
 }
 
-// 注册执行工具
+//---------------------------------------------------------------------------------
+// 注册、执行工具
 // Register weather tools
 server.tool(
   "get_alerts",
@@ -225,9 +227,9 @@ server.tool(
 
 // 主函数
 async function main() {
-  const transport = new StdioServerTransport();
-  await server.connect(transport);
-  console.error("Weather MCP Server running on stdio");
+  const transport = new StdioServerTransport();   // 创建stdio传输实例
+  await server.connect(transport);      // 启动server监听client请求，持续监听
+  console.error("Weather MCP Server running on stdio");     // 输出到标准错误流，不要使用log
 }
 
 main().catch((error) => {
